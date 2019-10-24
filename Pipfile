@@ -4,8 +4,16 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+autopep8 = "*"
 
 [packages]
+requests = "*"
+flask-restplus = "*"
+pymongo = "*"
+Flask = "*"
+Flask-PyMongo = "*"
+Werkzeug = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.7"
