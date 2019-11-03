@@ -8,6 +8,9 @@ import uuid
 import datetime
 import jwt
 
+#import services here
+from services.match_recommender import MatchRecommender
+
 #-----------------------------------------------------------------------------------------------------------------
 #                                     App Initialization
 #-----------------------------------------------------------------------------------------------------------------
@@ -18,7 +21,7 @@ app.config['SECRET_KEY'] = 'thisissecret'
 #                                     DB Configuration
 #-----------------------------------------------------------------------------------------------------------------
 client = MongoClient("mongodb+srv://niobrara:niobrara123@adaptiveblinddateapp-hdqaj.mongodb.net/test")
-db = client.timber
+db = client.timble
 
 def token_required(f):
     @wraps(f)
@@ -186,6 +189,18 @@ def internal_server_error(error=None):
     resp.status_code = 500
 
     return resp
+
+#-----------------------------------------------------------------------------------------------------------------
+#                                     Recommendation Engine
+#-----------------------------------------------------------------------------------------------------------------
+@app.route('/recommend/<public_id>', methods=['GET'])
+def get_recommendations(public_id):
+    try:
+        mr = MatchRecommender(db)
+        resp = mr.get_recommended_matches(public_id)
+        return resp
+    except:
+        return internal_server_error()
 
 if __name__ == "__main__":
     app.run()
