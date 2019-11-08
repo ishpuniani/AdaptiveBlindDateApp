@@ -1,0 +1,54 @@
+.login-container{
+    /* background-image: url('../../../assets/images/background-bg.png'); */
+    background-color: #edeae5;
+    background-position: center; /* Center the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    padding: 2em 2em;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    color: #30003e;
+    height: 100vh;
+    overflow: auto;
+}
+
+.login-container .app-name{
+    line-height: 32px;
+    padding: .5em;
+    margin-bottom: 20px;
+}
+
+.login-container .app-name img{
+    height: 160px;
+    padding-top: 20px;
+}
+
+.login{
+    min-width: 80%;
+}
+
+.login div{
+    display: flex;
+    flex-flow: column;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+
+.login-container .signup-link{
+    font-size: 12px;
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: center;
+}
+.login-container .signup-link .signup-text{
+    padding: 0 2px;
+}
+@media only screen and (min-width: 600px) {
+    .login-container .app-name img{
+        height: 250px;
+    }
+    .login{
+        min-width: 45%;
+    }
+}

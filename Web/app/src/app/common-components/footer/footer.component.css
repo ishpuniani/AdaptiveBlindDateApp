@@ -1,0 +1,25 @@
+.footer-container{
+    height: 10vh;
+    position: fixed;
+    padding: 0.5em;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* -webkit-box-shadow: inset -84px -27px 84px -13px #026670;
+    -moz-box-shadow: inset -84px -27px 84px -13px #026670;
+    box-shadow: inset -84px -27px 84px -13px #026670; */
+    /* background: rgb(9,70,121); */
+    /* background: linear-gradient(90deg, rgba(9,70,121,0.8421743697478992) 0%, rgba(9,54,121,0.8785889355742297) 40%); */
+    /* background: #929adc; */
+    align-items: center;
+    /* background: linear-gradient(0deg, #8690e7 10%, #929adc 65%, #c2c7f7 100%); */
+    /* background-color: #5680e9; */
+    background-color: #000;
+}
+
+.footer-container .nav-menu img{
+    max-height: 6vh;
+    min-height: 30px;
+    min-width: 30px;
+    max-width: 70px;
+}
