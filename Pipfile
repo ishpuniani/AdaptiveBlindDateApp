@@ -14,7 +14,8 @@ Flask = "*"
 Flask-PyMongo = "*"
 Werkzeug = "*"
 dnspython = "*"
-pyjwt = "*"
+virtualenv = "*"
+PyJWT = "*"
 
 [requires]
 python_version = "3.7"
