@@ -9,7 +9,7 @@ def import_content():
     db = client.timble
     collection_name = 'Activities' 
     db_cm = db[collection_name]
-    dataset=pd.read_csv('/Users/shuchitakapoor/Downloads/Activities.csv')
+    dataset=pd.read_csv('Activities.csv')
     data_json = json.loads(dataset.to_json(orient='records'))
     db_cm.remove()
     db_cm.insert(data_json)
