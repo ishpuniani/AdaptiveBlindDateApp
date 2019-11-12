@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def euclidean_distance(arr1, arr2):
@@ -12,6 +13,15 @@ def euclidean_distance(arr1, arr2):
     """
     d = np.linalg.norm(np.subtract(arr1,arr2))
     return d
+
+
+def json_to_df(json, columns=None):
+    df = pd.DataFrame(json).T
+    # df.rename(columns={"index":"id"},inplace=True)
+    # df = pd.DataFrame(json).T.reset_index()
+    if columns is not None:
+        df = df.loc[:, df.columns.str.contains('|'.join(columns))]
+    return df
 
 
 def main():
