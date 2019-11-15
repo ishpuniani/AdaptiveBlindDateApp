@@ -39,6 +39,7 @@ def calculate_similarity(data_df,ideal_df):
 
 
 def find_match_score(self_score, ideal_score):
+    # finding match score
     match_score = {}
     temp1, temp2 = 0, 0
     f = 1
@@ -50,7 +51,9 @@ def find_match_score(self_score, ideal_score):
         temp_list = []
         for value1, value2 in zip(temp1, temp2):
             temp_list.append((value1 + value2) // 2)
+            # fetch individual scores and minimize them
             m = max(temp_list)
+            # storing the maximum match score and users for whom the values are max
         match_score[key1] = [m, [list(self_score.keys())[x + f] for x, y in enumerate(temp_list) if y == m]]
         f = f + 1
     return match_score
