@@ -22,24 +22,29 @@ import services.utilities as ut
 def main():
     data = {"123":{"n_con":2.0,"conscientiousness":4.0,"n_neu":1.0,"neuroticism":3.0,"n_agr":1.0,"agreeableness":3.0,"n_ope":1.0,"openness":3.0,"n_ext":2.0,"extraversion":4.0},"234":{"n_con":1.0,"conscientiousness":3.0,"n_neu":1.0,"neuroticism":3.0,"n_agr":1.0,"agreeableness":3.0,"n_ope":1.0,"openness":3.0,"n_ext":1.0,"extraversion":3.0},"345":{"n_con":1.0,"conscientiousness":3.0,"n_neu":1.0,"neuroticism":3.0,"n_agr":1.0,"agreeableness":3.0,"n_ope":1.0,"openness":3.0,"n_ext":1.0,"extraversion":3.0},"456":{"n_con":1.0,"conscientiousness":3.0,"n_neu":1.0,"neuroticism":3.0,"n_agr":1.0,"agreeableness":3.0,"n_ope":1.0,"openness":3.0,"n_ext":1.0,"extraversion":3.0},"567":{"n_con":1.0,"conscientiousness":3.0,"n_neu":1.0,"neuroticism":3.0,"n_agr":1.0,"agreeableness":3.0,"n_ope":1.0,"openness":3.0,"n_ext":1.0,"extraversion":3.0}}
     data_df = ut.json_to_df(data,columns=['conscientiousness', 'neuroticism', 'agreeableness', 'openness', 'extraversion'])
-
-    arr1= data_df.loc['123',:].values
-    arr2 = data_df.loc['234',:].values
-    #print(arr1,arr2)
-    res_self = ut.euclidean_distance(arr1,arr2)
-    print("self score=",res_self)
-
-    data_ideal = {"123": {"conscientiousness": 6.0, "neuroticism": 6.0, "agreeableness": 6.0, "openness": 6.0, "extraversion": 6.0, "swipes": 4}, "234": {"conscientiousness": 5, "neuroticism": 5, "agreeableness": 5, "openness": 5, "extraversion": 5, "swipes": 6}, "345": {"conscientiousness": 5, "neuroticism": 5, "agreeableness": 5, "openness": 5, "extraversion": 5, "swipes": 8}}
+    #print(data_df)
+    l1 = len(data_df)
+    data_ideal = {"123": {"conscientiousness": 6.0, "neuroticism": 6.0, "agreeableness": 6.0, "openness": 6.0, "extraversion": 6.0, "swipes": 4}, "234": {"conscientiousness": 5, "neuroticism": 5, "agreeableness": 5, "openness": 5, "extraversion": 5, "swipes": 6}, "345": {"conscientiousness": 5, "neuroticism": 5, "agreeableness": 5, "openness": 5, "extraversion": 5, "swipes": 8}, "456": {"conscientiousness": 5, "neuroticism": 5, "agreeableness": 5, "openness": 5, "extraversion": 5, "swipes": 8},"567": {"conscientiousness": 5, "neuroticism": 5, "agreeableness": 5, "openness": 5, "extraversion": 5, "swipes": 8}}
     ideal_df = ut.json_to_df(data_ideal)
     ideal_df = ideal_df.drop('swipes', axis=1)
     #print(ideal_df)
+    self_score = ut.calculate_similarity(data_df,data_df)
+    print("self_score =", self_score)
+    ideal_score = ut.calculate_similarity(data_df,ideal_df)
+    print("ideal_score =",ideal_score)
 
-    arr1 = ideal_df.loc['123', :].values
-    arr2 = ideal_df.loc['234', :].values
-    #print(arr1, arr2)
-    res_ideal = ut.euclidean_distance(arr1, arr2)
-    print("ideal score=",res_ideal)
+    # finding match score
+    match_score = ut.find_match_score(self_score,ideal_score)
+    print("match scores for all users=",match_score)
 
+    # sort in descending order of matched values from greatest match to worst match
+    val = match_score.values()
+    val = list(val)
+    val.sort(reverse=True)
+    print("greatest match values and index (users) in descending order=",val)
+
+    # Update user_ideal_scores with swipe (real time) - left/right
+    # code pending
 
 
 if __name__ == '__main__':
