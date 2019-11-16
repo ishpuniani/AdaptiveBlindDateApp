@@ -1,0 +1,25 @@
+activity_id,name,openness,conscientiousness,extraversion,agreeableness,neuroticism
+1,Escape Games,1,,,,
+2,Do-It-Yourself Food,1,,,,
+3,Shopping Centers,1,,,,
+4,Bike Rentals,1,,,,
+5,Bowling,1,,,,
+6,Arcades,,,,1,
+7,Fishing,,1,,,
+8,Sailing,,,,,1
+9,Yoga,,1,,,1
+10,Art Galleries,,,,,1
+11,Museums,,1,,,
+12,Tea Rooms,,1,,,
+13,Golf,,1,,,
+14,Mini Golf,,,,,1
+15,Hiking,,,1,,
+16,Amusement Parks,,,1,,
+17,Climbing,,,1,,
+18,Go Karts,,,1,,
+19,Horseback Riding,,,1,,
+20,Diners,,,,1,
+21,Aquariums,,,,1,
+22,Beaches,,,,1,
+23,Cinema,,,,1,
+24,Lakes,,,,,1

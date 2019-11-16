@@ -1,3 +1,4 @@
+import json
 import numpy as np
 import pandas as pd
 
@@ -57,6 +58,14 @@ def find_match_score(self_score, ideal_score):
         match_score[key1] = [m, [list(self_score.keys())[x + f] for x, y in enumerate(temp_list) if y == m]]
         f = f + 1
     return match_score
+
+
+def replace_collection(db, collection_name, filepath):
+    db_cm = db[collection_name]
+    dataset=pd.read_csv(filepath)
+    data_json = json.loads(dataset.to_json(orient='records'))
+    db_cm.remove()
+    db_cm.insert(data_json)
 
 
 def main():
