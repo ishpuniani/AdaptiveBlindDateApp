@@ -1,3 +1,4 @@
+import json
 import numpy as np
 import pandas as pd
 
@@ -79,6 +80,14 @@ def user_match_score(match_score = None,userid='234',n=4):
         #print(get_sorted_response)
         matches[userid] = get_sorted_response
         return matches
+
+
+def replace_collection(db, collection_name, filepath):
+    db_cm = db[collection_name]
+    dataset=pd.read_csv(filepath)
+    data_json = json.loads(dataset.to_json(orient='records'))
+    db_cm.remove()
+    db_cm.insert(data_json)
 
 
 def main():
