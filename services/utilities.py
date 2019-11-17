@@ -30,33 +30,55 @@ def calculate_similarity(data_df,ideal_df):
         arr1 = ideal_df.iloc[i, :].values
         user_id_1 = ideal_df.index[i]
         score_other_list = []
-        for j in range(i + 1, l1):
+        score_dict[user_id_1] = {}
+        #print(score_dict)
+        for j in range(l1):
+            user_id_2 = data_df.index[j]
+            #print(user_id_1,user_id_2)
+            if (i==j):
+                continue
             arr2 = data_df.iloc[j, :].values
-            score_other_list.append(euclidean_distance(arr1, arr2))
-        score_dict[user_id_1] = score_other_list
+            #score_other_list.append(euclidean_distance(arr1, arr2))
+            score_dict[user_id_1][user_id_2] = euclidean_distance(arr1, arr2)
+            #print(score_dict)
     #del score_dict[user_id_1]
     return score_dict
 
 
-def find_match_score(self_score, ideal_score):
+def find_match_score(self_score, ideal_score_a_b,ideal_score_b_a):
     # finding match score
     match_score = {}
-    temp1, temp2 = 0, 0
-    f = 1
-    for key1, values1 in self_score.items():
-        if (len(values1) == 0):
-            continue
-        temp1 = self_score[key1]
-        temp2 = ideal_score[key1]
-        temp_list = []
-        for value1, value2 in zip(temp1, temp2):
-            temp_list.append((value1 + value2) // 2)
-            # fetch individual scores and minimize them
-            m = max(temp_list)
-            # storing the maximum match score and users for whom the values are max
-        match_score[key1] = [m, [list(self_score.keys())[x + f] for x, y in enumerate(temp_list) if y == m]]
-        f = f + 1
+    for user1 in self_score:
+        m = 100
+        match_score[user1] = {}
+        for user2 in self_score[user1]:
+            av_score = ((self_score[user1][user2] + ideal_score_a_b[user1][user2] + ideal_score_b_a[user1][user2]) // 3)
+            if (av_score <= m):
+                m = av_score
+            match_score[user1][user2] = m
+    #print(match_score)
     return match_score
+
+from collections import OrderedDict
+from itertools import islice
+def user_match_score(match_score = None,userid='234',n=4):
+    """ Fetches the user id
+
+    :param match_score:
+    :param userid:
+    :param n:
+    :return:
+    """
+    matches = {}
+    if userid in match_score:
+        vals = match_score[userid]
+        #print(vals)
+        match_ascending = OrderedDict(sorted(vals.items(), key=lambda kv: kv[1]))
+        #print(match_ascending)
+        get_sorted_response = dict((x, y) for x,y in list(islice(OrderedDict(sorted(match_score[userid].items(), key=lambda kv: kv[1])).items(),n)))
+        #print(get_sorted_response)
+        matches[userid] = get_sorted_response
+        return matches
 
 
 def main():
