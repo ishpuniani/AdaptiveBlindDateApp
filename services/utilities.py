@@ -1,7 +1,8 @@
 import json
 import numpy as np
 import pandas as pd
-
+from collections import OrderedDict
+from itertools import islice
 
 def euclidean_distance(arr1, arr2):
     """
@@ -17,6 +18,12 @@ def euclidean_distance(arr1, arr2):
 
 
 def json_to_df(json, columns=None):
+    """
+    Helper function for converting json to Dataframe
+    :param json: Json to be converted to Dataframe
+    :param columns: Columns to be added to Dataframe
+    :return: Corresponding Dataframe for given json
+    """
     df = pd.DataFrame(json).T
     # df.rename(columns={"index":"id"},inplace=True)
     # df = pd.DataFrame(json).T.reset_index()
@@ -25,6 +32,15 @@ def json_to_df(json, columns=None):
     return df
 
 def calculate_similarity(data_df,ideal_df):
+    """
+    Calculates how similar or dissimilar all pair of users are with each other. This forms
+    an n*n matrix
+    :param data_df: Similarity between users based on their individual personalities fetched from
+    user models generated for each of them
+    :param ideal_df: Similarity between users based based on their "required" personalities in a partner fetched from
+    user models generated for each of them
+    :return: Similarity scores ( euclidian distance)
+    """
     score_dict ={}
     l1 = len(data_df)
     for i in range(l1):
@@ -47,6 +63,16 @@ def calculate_similarity(data_df,ideal_df):
 
 
 def find_match_score(self_score, ideal_score_a_b,ideal_score_b_a):
+    """
+    Aggregates all 3 similarity scores to generate match score for each users
+    :param self_score: Similarity between users based on their individual personalities fetched from
+    user models generated for each of them
+    :param ideal_score_a_b: Similarity between users based based on their "required" personalities in a partner fetched from
+    user models generated for each of them
+    :param ideal_score_b_a: Similarity between users based based on their "required" personalities in a partner fetched from
+    user models generated for each of them
+    :return: Aggregated match score for each user with every other user
+    """
     # finding match score
     match_score = {}
     for user1 in self_score:
@@ -60,15 +86,14 @@ def find_match_score(self_score, ideal_score_a_b,ideal_score_b_a):
     #print(match_score)
     return match_score
 
-from collections import OrderedDict
-from itertools import islice
-def user_match_score(match_score = None,userid='234',n=4):
-    """ Fetches the user id
 
-    :param match_score:
-    :param userid:
-    :param n:
-    :return:
+def user_match_score(match_score = None,userid='234',n=4):
+    """ Finds 'n' best matched users for a user id according to the match score
+
+    :param match_score: dictionary containing all the match scores for all users
+    :param userid: the user for whom best matches are supposed to be found
+    :param n: Number of best matches required
+    :return: 'n' best matched partners for given userid
     """
     matches = {}
     if userid in match_score:
