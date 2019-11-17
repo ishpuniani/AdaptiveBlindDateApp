@@ -1,0 +1,25 @@
+Id,Category,Name,Phone,Imageurl,Address,Latitude,Longitude,Rating
+1,Escape Games,Adventure Rooms - Dublin,+353 87 761 1808,https://s3-media4.fl.yelpcdn.com/bphoto/WOfPb5MjfY7sNcVjITxRJg/o.jpg,"['6-7 Little Britain Street', ""Campbell's Court"", 'Dublin 7', 'Republic of Ireland']",53.34938,-6.26999,5.0
+2,Do-It-Yourself Food,The Butler's Pantry,+353 1 230 1624,,"['19 Sandycove Road', 'Sandycove', 'Sandycove, A96 H2N1', 'Republic of Ireland']",53.28583,-6.11449,4.0
+3,Shopping Centers,Tiger,,https://s3-media3.fl.yelpcdn.com/bphoto/7sPIyuXEzamGu06ySY2Jvw/o.jpg,"['36-50 Nassau Street', 'Dublin 2', 'Republic of Ireland']",53.34284,-6.25828,4.5
+4,Bike Rentals,360 Cycles,+353 1 853 3107,https://s3-media4.fl.yelpcdn.com/bphoto/uWp3YRes2ceKLU58V2C0kw/o.jpg,"['360 Clontarf Road', 'Clontarf', 'Dublin 3', 'Republic of Ireland']",53.36236,-6.1795,5.0
+5,Bowling,Aer Lingus Social Athletic Association,,https://s3-media4.fl.yelpcdn.com/bphoto/bx12q9ofrfmhjKKem35uHA/o.jpg,"['Dublin Airport', 'Old Airport Road', 'Toberbunny, Co. Dublin', 'Republic of Ireland']",53.4280014038086,-6.22907018661499,5.0
+6,Arcades,Bray Bowl,+353 1 286 4455,https://s3-media3.fl.yelpcdn.com/bphoto/P4YhWzRFpjDcU0LDbdx0Og/o.jpg,"['Quinsborough Rd', 'Bray, Co. Wicklow', 'Republic of Ireland']",53.2049470435707,-6.10214125421453,4.0
+7,Fishing,ABC Fishing Tackle,+353 1 873 1525,https://s3-media4.fl.yelpcdn.com/bphoto/G7hqe1bdQLfOTaUIy_BXJw/o.jpg,"[""15 Mary's Abbey"", 'Dublin 7', 'Republic of Ireland']",53.3471603,-6.2701201,5.0
+8,Sailing,Howth Pier,,https://s3-media1.fl.yelpcdn.com/bphoto/PlrUxKFV657H0vk0PYViOg/o.jpg,"['Howth Road', 'Dublin', 'Republic of Ireland']",53.3915109336643,-6.07054872412695,3.0
+9,Yoga,Aerial Yoga Dublin,+353 85 723 9699,https://s3-media1.fl.yelpcdn.com/bphoto/znLM5ULSpUOJ033OFrMVaw/o.jpg,"['7 Dublin Road', 'Smithfield Market', 'Dublin 7', 'Republic of Ireland']",53.3495303477403,-6.2781697244385,5.0
+10,Art Galleries,Jam Art Factory,+353 1 616 5671,https://s3-media1.fl.yelpcdn.com/bphoto/Yz29geCJWiihCz3dfzHh2g/o.jpg,"['64/65 Patrick Street', 'Dublin 8', 'Republic of Ireland']",53.341103,-6.2719744,5.0
+11,Museums,Jam Art Factory,+353 1 616 5671,https://s3-media1.fl.yelpcdn.com/bphoto/Yz29geCJWiihCz3dfzHh2g/o.jpg,"['64/65 Patrick Street', 'Dublin 8', 'Republic of Ireland']",53.341103,-6.2719744,5.0
+12,Tea Rooms,Queen of Tarts,+353 1 670 7499,https://s3-media2.fl.yelpcdn.com/bphoto/MvEgnV8zlh0KUurefW007Q/o.jpg,"['Cork Hill', 'Dame Street', 'Dublin 2', 'Republic of Ireland']",53.3441209863508,-6.26752853393555,4.5
+13,Golf,Portmarnock Golf Links,+353 1 846 2968,https://s3-media1.fl.yelpcdn.com/bphoto/p92qEj9PqoIBjHfkWEdAjA/o.jpg,"['Golf Links Road', 'Portmarnock, Co. Dublin', 'Republic of Ireland']",53.4172707,-6.1284699,5.0
+14,Mini Golf,Bohernabreena pitch & putt course,,,"['Bohernabreena, Tallaght', 'Dublin 24', 'Republic of Ireland']",53.2705,-6.35765,5.0
+15,Hiking,Great Sugarloaf Mountain,,https://s3-media1.fl.yelpcdn.com/bphoto/WHF8IAMVDz5mbzjOVDOpMQ/o.jpg,"['Glencap Commons South, Co. Wicklow', 'Republic of Ireland']",53.1541158068118,-6.15047206894046,5.0
+16,Amusement Parks,"Rose gardens, St anne's park",+353 1 833 1859,https://s3-media3.fl.yelpcdn.com/bphoto/anrqvS5K7-JEHcI_iTzhKw/o.jpg,"['Mount Prospect Avenue', 'Clontarf', 'Dublin 3', 'Republic of Ireland']",53.3716139137234,-6.17992970659145,5.0
+17,Climbing,Gravity Climbing Centre,+353 1 707 8585,https://s3-media1.fl.yelpcdn.com/bphoto/mDgoAnmJY1ziXhTYlBY6Rw/o.jpg,"['6a, Goldenbridge Industrial Estate', 'Inchicore', 'Dublin 8', 'Republic of Ireland']",53.3364716,-6.3221698,4.5
+18,Go Karts,Kylemore Karting,+353 1 626 1444,https://s3-media2.fl.yelpcdn.com/bphoto/6zlFPg67FeZ-YFSysWlqbg/o.jpg,"['Unit 1A, Kylemore Industrial Estate', 'Killeen Road', 'Dublin 10', 'Republic of Ireland']",53.3338129463218,-6.35472989266233,4.5
+19,Horseback Riding,Killegar Stables,+353 1 286 0919,https://s3-media2.fl.yelpcdn.com/bphoto/HEDlxxHQILfpx4fqE6z1Bw/o.jpg,"['The Scalp', 'Enniskerry, Co. Wicklow', 'Republic of Ireland']",53.2097851253784,-6.19259834289551,5.0
+20,Diners,Gerry's Coffee Shop,+353 1 478 3524,https://s3-media3.fl.yelpcdn.com/bphoto/uZv4mcfcJ8DIA9QqK3TkKA/o.jpg,"['6 Montague St', 'Dublin 2', 'Republic of Ireland']",53.33654,-6.26468,4.5
+21,Aquariums,Baumann's of Stillorgan,+353 1 288 4021,https://s3-media3.fl.yelpcdn.com/bphoto/LI3lpaR1sbBirl3-vbtjfA/o.jpg,"['No 4 Old Dublin Road', 'Stillorgan, Co. Dublin', 'Republic of Ireland']",53.2890892028809,-6.20777988433838,4.5
+22,Beaches,Bulloch Harbour,+353 1 280 0915,https://s3-media2.fl.yelpcdn.com/bphoto/Cgdm3N-uvWYEsE8ivY6VVQ/o.jpg,"['Dalkey', 'Dalkey, Co. Dublin', 'Republic of Ireland']",53.2847098808401,-6.10732555389404,5.0
+23,Cinema,Brooks Private Cinema,+353 1 670 4000,https://s3-media4.fl.yelpcdn.com/bphoto/LH3_MTlCMeHKJZyfqy-eyA/o.jpg,"['Drury Street', 'Brooks Hotel', 'Dublin 2', 'Republic of Ireland']",53.3417386731518,-6.26371976866405,5.0
+24,Lakes,Guinness Lake,+353 404 20070,https://s3-media1.fl.yelpcdn.com/bphoto/n0bGI1JtKmraQ3iQeKthuQ/o.jpg,"['Ballinastoe Woods', 'Roundwood', 'County Wicklow, Co. Wicklow', 'Republic of Ireland']",53.1075108965825,-6.2607018166504,5.0

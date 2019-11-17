@@ -30,22 +30,19 @@ def main():
     #print(ideal_df)
     self_score = ut.calculate_similarity(data_df,data_df)
     print("self_score =", self_score)
-    ideal_score = ut.calculate_similarity(data_df,ideal_df)
-    print("ideal_score =",ideal_score)
+    ideal_score_a_b = ut.calculate_similarity(data_df,ideal_df)
+    print("ideal_score_a_b =",ideal_score_a_b)
+    ideal_score_b_a = ut.calculate_similarity(ideal_df, data_df)
+    print("ideal_score_b_a =", ideal_score_b_a)
 
     # finding match score
-    match_score = ut.find_match_score(self_score,ideal_score)
+    match_score = ut.find_match_score(self_score,ideal_score_a_b,ideal_score_b_a)
     print("match scores for all users=",match_score)
 
-    # sort in descending order of matched values from greatest match to worst match
-    val = match_score.values()
-    val = list(val)
-    val.sort(reverse=True)
-    print("greatest match values and index (users) in descending order=",val)
-
-    # Update user_ideal_scores with swipe (real time) - left/right
-    # code pending
-
+    # find n matches for userid with lowest match score
+    # userid and number of matches needed, to be fetched from UI
+    out = ut.user_match_score(match_score)
+    print(out)
 
 if __name__ == '__main__':
     main()
