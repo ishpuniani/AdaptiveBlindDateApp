@@ -12,20 +12,20 @@ body .container{
     height: 80vh; /* You must set a specified height */
     min-width: 100vw;
     max-width: 100vw;
-    background-color: #edeae5;
+    background-color: #fff;
     background-position: center; /* Center the image */
     background-repeat: repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
     padding: 2em 1em;
     position: fixed;
     top: 10vh;
+    overflow: auto;
 }
 
 body .container .container-heading{
     font-size: 1.2em;
     font-weight: bold;
-    /* color: #5680e9; */
-    color: rgb(29, 26, 26);
+    color: rgb(95, 83, 83);
     padding: 0 0 1em 0;
 }
 
@@ -36,18 +36,17 @@ body .link{
 input, select {
     display: block;
     margin: 0;
-    padding: var(--inputPaddingV) var(--inputPaddingH);
+    padding: 0.5em;
     color: inherit;
     width: 100%;
     font-family: inherit;
-    font-size: var(--inputFontSize);
+    font-size: 0.8em;
     font-weight: inherit;
-    line-height: var(--inputLineHeight);
     border: none;
     border-radius: 0.4rem;
-    transition: box-shadow var(--transitionDuration);
     height: 2em;
     background-color: #fff;
+    box-shadow: 0px 4px 10px 0px #ccc;
   }
   
 input::placeholder {
@@ -56,7 +55,7 @@ input::placeholder {
   
 input:focus, select:focus {
     outline: none;
-    box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+    box-shadow: 5px 4px 10px 0px #313131;
 }
 
 button{
@@ -70,6 +69,7 @@ button{
     font-weight:300;
     text-align:center;
     transition: all 0.2s;
+    box-shadow: 0px 4px 10px 0px #ccc;
 }
 button:hover{
     outline: 1px solid #ccc;

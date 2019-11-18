@@ -22,16 +22,16 @@ export class CompatibilityChartComponent implements OnInit {
     var data = {
       labels: ['Humour', 'Adventurous', 'Socially Active', 'Optimist', 'Creative'],
       datasets: [{
-        backgroundColor: "rgba(197, 168, 243, 0.5)",
-        borderColor: "rgba(197, 168, 243, 0.5)",
-        pointBackgroundColor: "rgba(197, 168, 243, 0.5)",
+        backgroundColor: "rgba(236, 172, 172, 0.5)",
+        borderColor: "rgba(236, 172, 172, 0.5)",
+        pointBackgroundColor: "rgba(236, 172, 172, 0.5)",
         label: "Ellen",
         data: [5, 3, 2, 1, 4]
       },
       {
-        backgroundColor: "rgba(68, 153, 226, 0.5)",
-        borderColor: "rgba(68, 153, 226, 0.5)",
-        pointBackgroundColor: "rgba(68, 153, 226, 0.5)",
+        backgroundColor: "rgba(228, 149, 203, 0.5)",
+        borderColor: "rgba(228, 149, 203, 0.5)",
+        pointBackgroundColor: "rgba(228, 149, 203, 0.5)",
         label: "Brad",
         data: [4, 4, 1, 2, 2]
       }]

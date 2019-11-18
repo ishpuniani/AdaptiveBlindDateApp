@@ -16,6 +16,7 @@ Werkzeug = "*"
 dnspython = "*"
 virtualenv = "*"
 PyJWT = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.7"

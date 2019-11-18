@@ -7,18 +7,20 @@ from functools import wraps
 import uuid
 import datetime
 import jwt
+from flask_cors import CORS
 
 #-----------------------------------------------------------------------------------------------------------------
 #                                     App Initialization
 #-----------------------------------------------------------------------------------------------------------------
 app = Flask(__name__)
+CORS(app)
 app.config['SECRET_KEY'] = 'thisissecret'
 
 #-----------------------------------------------------------------------------------------------------------------
 #                                     DB Configuration
 #-----------------------------------------------------------------------------------------------------------------
 client = MongoClient("mongodb+srv://niobrara:niobrara123@adaptiveblinddateapp-hdqaj.mongodb.net/test")
-db = client.timber
+db = client.timble
 
 def token_required(f):
     @wraps(f)
@@ -87,7 +89,6 @@ def login():
     _json = request.get_json()
     _email = _json['email']
     _password = _json['password']
-
     user = db.user.find_one({'email': _email})
 
     if not user:
@@ -105,14 +106,12 @@ def login():
 #                                     User related APIs
 #-----------------------------------------------------------------------------------------------------------------
 @app.route('/users')
-@token_required
-def users(current_user):
+# @token_required
+def users():
     users = db.user.find()
     users = dumps(users)
 
     return jsonify({'users' : users})
-
-    return resp
 
 
 @app.route('/user/<id>')

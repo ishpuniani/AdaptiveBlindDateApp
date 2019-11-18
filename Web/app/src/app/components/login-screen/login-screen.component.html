@@ -5,26 +5,27 @@
         <!-- <img src="../../../assets/images/logo-icon.png"/> -->
     </div>
     <div class="login">
+        <div class="error" *ngIf="errorMsg">{{errorMsg}}</div>
         <div *ngIf="isLoginScreen">
             <div>
                 <label>Email</label>
-                <input type="text"/>
+                <input [(ngModel)] = "user.email"  type="text"/>
             </div>
             <div>
                 <label>Password</label>
-                <input type="password"/>
+                <input [(ngModel)] = "user.password" type="password"/>
             </div>
         </div>
         <div class="signup" *ngIf="!isLoginScreen">
             <div>
-                <label>Prefered Name</label>
-                <input type="text"/>
+                <label for="name">Prefered Name</label>
+                <input id="name" [(ngModel)] = "user.name" type="text"/>
             </div>
-            <div>
+            <!-- <div>
                 <label>Age</label>
                 <input type="number" min=13/>
-            </div>
-            <div>
+            </div> -->
+            <!-- <div>
                 <label>Gender</label>
                 <select>
                     <option selected disabled>Select</option>
@@ -32,26 +33,27 @@
                     <option>Female</option>
                     <option>Others</option>
                 </select>
-            </div>
+            </div> -->
             <div>
                 <label>Contact Number</label>
-                <input type="number"/>
+                <input  [(ngModel)] = "user.mobile" type="number"/>
             </div>
             <div>
                 <label>E-mail</label>
-                <input type="email"/>
+                <input [(ngModel)] = "user.email" type="email"/>
             </div>
             <div>
                 <label>Password</label>
-                <input type="password"/>
+                <input [(ngModel)] = "user.password" type="password"/>
             </div>
             <div>
                 <label>Confirm Password</label>
-                <input type="password"/>
+                <input [(ngModel)] = "user.confirmPassword" type="password"/>
             </div>
         </div>
         <div>
-            <button (click)="authenticateAndLogin()">Login</button>
+            <button *ngIf="isLoginScreen" (click)="authenticateAndLogin()">Login</button>
+            <button *ngIf="!isLoginScreen" (click)="signupUser()">Signup</button>
             <div *ngIf="isLoginScreen" class="signup-link text-right">Want to register? Click <span class="signup-text" (click)="showSignUpContent(true)">here</span>to Sign Up</div>
             <div *ngIf="!isLoginScreen" class="signup-link text-right">Already registered? Click <span class="signup-text" (click)="showSignUpContent(false)">here</span>to Login</div>
         </div>

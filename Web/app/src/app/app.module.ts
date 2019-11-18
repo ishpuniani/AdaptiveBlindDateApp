@@ -14,6 +14,8 @@ import { MatchesComponent } from './components/matches/matches.component';
 import { QuestionaireComponent } from './components/questionaire/questionaire.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SliderComponent } from './commmon-components/slider/slider.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { SliderComponent } from './commmon-components/slider/slider.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

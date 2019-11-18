@@ -14,7 +14,8 @@
     align-items: center;
     /* background: linear-gradient(0deg, #8690e7 10%, #929adc 65%, #c2c7f7 100%); */
     /* background-color: #5680e9; */
-    background-color: #000;
+    background-color: #ed3833;
+    opacity: 0.8;
 }
 
 .footer-container .nav-menu img{
