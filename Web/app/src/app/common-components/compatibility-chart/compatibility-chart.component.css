@@ -1,0 +1,29 @@
+.radar-chart{
+    margin-top: 40px;
+    max-height: 60vh;
+    max-width: 60vw;
+    min-height: 200px;
+    min-width: 310px;
+    margin: auto;
+}
+
+.chart-container{
+    margin-top: 2em;
+}
+
+.like-unlike-container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20vh;
+}
+@media only screen and (min-width: 600px) {
+    .like-unlike-container{
+        margin-top: 5vh;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .radar-chart{
+        max-height: 80vh;
+        max-width: 100vw;
+    }
+}

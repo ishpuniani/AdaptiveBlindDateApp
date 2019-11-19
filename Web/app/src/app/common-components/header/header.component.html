@@ -1,0 +1,20 @@
+<div class="header-container row">
+    <div class="logo-container col app-name" (click)="navigate('home')"><img src="../../../assets/images/2.png"/></div>
+    <!-- <div class="logo-container col app-name" (click)="navigate('home')"><img src="../../../assets/images/logo-t1.png"/></div> -->
+
+    <!-- <div class="logout-container col link text-right" (click)="navigate('login')">Logout</div> -->
+    <div class="menu col link text-right">
+        <div class="menu-items row">
+            <div class="col" (click)="navigate('home/profile')">Profile</div>
+            <div class="col" (click)="navigate('login')">Logout</div>
+        </div>
+        <div class="menu-icon">
+            <img (click)="showHideMenuDropdown()" src="../../../assets/images/3.png"/>
+            <!-- <img (click)="showHideMenuDropdown()" src="../../../assets/images/menu-icon.png"/> -->
+            <div *ngIf="showMenuDropdown" class="dropdown-menu">
+                <div class="menu-item" (click)="navigate('home/profile')">Profile</div>
+                <div class="menu-item" (click)="navigate('login')">Logout</div>
+            </div>
+        </div>
+    </div>
+</div>

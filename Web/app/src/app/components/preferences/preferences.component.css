@@ -1,0 +1,8 @@
+.preferences-container{
+    color: #000;
+}
+
+.preferences-container div{
+    line-height: 18px;
+    margin-bottom: 10px;
+}

@@ -7,6 +7,7 @@ from functools import wraps
 import uuid
 import datetime
 import jwt
+from flask_cors import CORS
 
 #import services here
 from services.match_recommender import MatchRecommender
@@ -15,6 +16,7 @@ from services.match_recommender import MatchRecommender
 #                                     App Initialization
 #-----------------------------------------------------------------------------------------------------------------
 app = Flask(__name__)
+CORS(app)
 app.config['SECRET_KEY'] = 'thisissecret'
 
 #-----------------------------------------------------------------------------------------------------------------
@@ -90,7 +92,6 @@ def login():
     _json = request.get_json()
     _email = _json['email']
     _password = _json['password']
-
     user = db.user.find_one({'email': _email})
 
     if not user:
@@ -108,14 +109,12 @@ def login():
 #                                     User related APIs
 #-----------------------------------------------------------------------------------------------------------------
 @app.route('/users')
-@token_required
-def users(current_user):
+# @token_required
+def users():
     users = db.user.find()
     users = dumps(users)
 
     return jsonify({'users' : users})
-
-    return resp
 
 
 @app.route('/user/<id>')
