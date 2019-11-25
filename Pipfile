@@ -14,7 +14,9 @@ Flask = "*"
 Flask-PyMongo = "*"
 Werkzeug = "*"
 dnspython = "*"
-pyjwt = "*"
+virtualenv = "*"
+PyJWT = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.7"

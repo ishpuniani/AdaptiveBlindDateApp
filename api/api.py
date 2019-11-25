@@ -7,6 +7,7 @@ from functools import wraps
 import uuid
 import datetime
 import jwt
+from flask_cors import CORS
 
 # import services here
 from models.user import User
@@ -17,6 +18,7 @@ from services.user_service import UserService
 #                                     App Initialization
 # -----------------------------------------------------------------------------------------------------------------
 app = Flask(__name__)
+CORS(app)
 app.config['SECRET_KEY'] = 'thisissecret'
 
 # -----------------------------------------------------------------------------------------------------------------
@@ -95,7 +97,6 @@ def login():
     _json = request.get_json()
     _email = _json['email']
     _password = _json['password']
-
     db_user = user_service.get_user(email=_email)
 
     if not db_user:
