@@ -11,7 +11,7 @@ from flask_cors import CORS
 
 # import services here
 # from models.user import User
-# from services.recommender_service import RecommenderService
+from services.recommender_service import RecommenderService
 from services.user_service import UserService
 from services.user_model_service import UserModelService
 
@@ -27,6 +27,7 @@ app.config['SECRET_KEY'] = 'thisissecret'
 # -----------------------------------------------------------------------------------------------------------------
 user_service = UserService()
 user_model_service = UserModelService()
+recommender_service = RecommenderService()
 
 
 def token_required(f):
@@ -90,6 +91,8 @@ def add_user():
         user_service.save_user(user_to_save)
 
         user_model_service.save_user_default_model(public_id=_public_id)
+
+        user_model_service.save_user_ideal_model(public_id=_public_id)
 
         return user_to_save
     else:
@@ -213,10 +216,7 @@ def internal_server_error(error=None):
 @app.route('/recommend/<public_id>', methods=['GET'])
 def get_recommendations(public_id):
     try:
-        # mr = MatchRecommender(db)
-        # resp = mr.get_recommended_matches(public_id)
-        # return resp
-        pass
+        return recommender_service.get_recommendations(public_id=public_id)
     except:
         return internal_server_error()
 

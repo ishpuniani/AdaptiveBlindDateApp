@@ -17,6 +17,7 @@ dnspython = "*"
 virtualenv = "*"
 PyJWT = "*"
 flask-cors = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.7"

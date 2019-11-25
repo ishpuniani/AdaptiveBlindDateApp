@@ -2,3 +2,5 @@ flask
 pymongo
 flask_pymongo
 werkzeug
+numpy
+pandas
