@@ -10,9 +10,10 @@ import jwt
 from flask_cors import CORS
 
 # import services here
-from models.user import User
-from services.match_recommender import MatchRecommender
+# from models.user import User
+# from services.recommender_service import RecommenderService
 from services.user_service import UserService
+from services.user_model_service import UserModelService
 
 # -----------------------------------------------------------------------------------------------------------------
 #                                     App Initialization
@@ -25,6 +26,7 @@ app.config['SECRET_KEY'] = 'thisissecret'
 #                                     Services Initialization
 # -----------------------------------------------------------------------------------------------------------------
 user_service = UserService()
+user_model_service = UserModelService()
 
 
 def token_required(f):
@@ -83,11 +85,13 @@ def add_user():
         # do not save password as a plain text
         _hashed_password = generate_password_hash(_password)
         # save details
-        new_user = user_service.save_user(User(public_id=_public_id, name=_name, email=_email, mobile=_mobile,
-                                               password=_hashed_password))
-        resp = dumps(new_user)
-        resp.status_code = 200
-        return resp
+        user_to_save = {'public_id': _public_id, 'name': _name, 'email': _email, 'mobile': _mobile,
+                        'password': _hashed_password}
+        user_service.save_user(user_to_save)
+
+        user_model_service.save_user_default_model(public_id=_public_id)
+
+        return user_to_save
     else:
         return not_found()
 
@@ -116,8 +120,8 @@ def login():
 #                                     User related APIs
 # -----------------------------------------------------------------------------------------------------------------
 @app.route('/users')
-#@token_required
-#def users(current_user):
+# @token_required
+# def users(current_user):
 def users(current_user):
     db_users = user_service.get_all_users()
     db_users = dumps(db_users)
@@ -147,8 +151,8 @@ def update_user():
         # do not save password as a plain text
         _hashed_password = generate_password_hash(_password)
         # save edits
-        saved_user = user_service.save_user(User(public_id=_public_id, name=_name, email=_email, mobile=_mobile,
-                                                 password=_hashed_password))
+        saved_user = user_service.save_user({'public_id': _public_id, 'name': _name, 'email': _email, 'mobile': _mobile,
+                                             'password': _hashed_password})
         resp = dumps(saved_user)
         resp.status_code = 200
         return resp
@@ -209,9 +213,9 @@ def internal_server_error(error=None):
 @app.route('/recommend/<public_id>', methods=['GET'])
 def get_recommendations(public_id):
     try:
-        #mr = MatchRecommender(db)
-        #resp = mr.get_recommended_matches(public_id)
-        #return resp
+        # mr = MatchRecommender(db)
+        # resp = mr.get_recommended_matches(public_id)
+        # return resp
         pass
     except:
         return internal_server_error()
