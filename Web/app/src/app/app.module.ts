@@ -13,7 +13,6 @@ import { AppContainerComponent } from './components/app-container/app-container.
 import { MatchesComponent } from './components/matches/matches.component';
 import { QuestionaireComponent } from './components/questionaire/questionaire.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SliderComponent } from './commmon-components/slider/slider.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -29,8 +28,7 @@ import { FormsModule } from '@angular/forms';
     AppContainerComponent,
     MatchesComponent,
     QuestionaireComponent,
-    ProfileComponent,
-    SliderComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
