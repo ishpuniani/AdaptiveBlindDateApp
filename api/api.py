@@ -114,7 +114,7 @@ def login():
             {'public_id': db_user['public_id'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=15)},
             app.config['SECRET_KEY'])
 
-        return jsonify({'token': token.decode('UTF-8')})
+        return dumps(db_user)
 
     return unauthorized()
 
@@ -209,6 +209,17 @@ def internal_server_error(error=None):
 
     return resp
 
+
+# -----------------------------------------------------------------------------------------------------------------
+#                                     User Model
+# -----------------------------------------------------------------------------------------------------------------
+
+@app.route('/questions', methods=['GET'])
+def get_questions():
+    try:
+        return recommender_service.get_recommendations(public_id=public_id)
+    except:
+        return internal_server_error()
 
 # -----------------------------------------------------------------------------------------------------------------
 #                                     Recommendation Engine
