@@ -16,6 +16,9 @@ class UserModelRepository:
     def get_all_user_models(self):
         return self.__db.user_model.find({})
 
+    def get_all_ideal_models(self):
+        return self.__db.user_ideal_model.find({})
+
     def save_user_model(self, user_model):
         user_model_db = self.get_user_model(public_id=user_model['public_id'])
 

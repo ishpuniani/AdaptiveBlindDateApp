@@ -28,10 +28,10 @@ class RecommenderService:
         self.__user_model_repository = UserModelRepository()
 
     def get_recommendations(self, public_id):
-        user_model_db = self.__user_model_repository.get_user_model(public_id=public_id)
+        user_model_db = self.__user_model_repository.get_all_user_models()
         data_df = ut.json_to_df(user_model_db, columns=['public_id','conscientiousness', 'neuroticism', 'agreeableness', 'openness',
                                                         'extraversion'])
-        user_ideal_model_db = self.__user_model_repository.get_user_ideal_model(public_id=public_id)
+        user_ideal_model_db = self.__user_model_repository.get_all_ideal_models()
 
         ideal_df = ut.json_to_df(user_ideal_model_db)
         ideal_df = ideal_df.drop('swipes', axis=1)
@@ -47,4 +47,6 @@ class RecommenderService:
 
         # find n matches for userid with lowest match score
         # userid and number of matches needed, to be fetched from UI
-        return ut.user_match_score(match_score)
+        matches =  ut.user_match_score(match_score,userid=public_id)
+        final_match_user_list = str(matches[public_id].keys())
+        return final_match_user_list
