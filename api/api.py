@@ -14,6 +14,7 @@ from flask_cors import CORS
 from services.recommender_service import RecommenderService
 from services.user_service import UserService
 from services.user_model_service import UserModelService
+from services.questionaire_service import QuestionnaireService
 
 # -----------------------------------------------------------------------------------------------------------------
 #                                     App Initialization
@@ -28,6 +29,7 @@ app.config['SECRET_KEY'] = 'thisissecret'
 user_service = UserService()
 user_model_service = UserModelService()
 recommender_service = RecommenderService()
+questionaire_service = QuestionnaireService()
 
 
 def token_required(f):
@@ -217,9 +219,23 @@ def internal_server_error(error=None):
 @app.route('/questions', methods=['GET'])
 def get_questions():
     try:
-        return recommender_service.get_recommendations(public_id=public_id)
+        return dumps(QuestionnaireService.get_questions())
     except:
         return internal_server_error()
+
+
+@app.route('/answer', methods=['POST'])
+def save_answer():
+    try:
+        _json = request.get_json()
+        _public_id = _json['public_id']
+        _question_id = _json['question_id']
+        _answer_id = _json['answer_id']
+        data = [{'user_id': _public_id, _question_id: _answer_id}]
+        return dumps(questionaire_service.build_user_model(data))
+    except:
+        return internal_server_error()
+
 
 # -----------------------------------------------------------------------------------------------------------------
 #                                     Recommendation Engine
