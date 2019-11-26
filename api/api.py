@@ -255,7 +255,7 @@ def get_recommendations(public_id):
 @app.route('/matches/<public_id>', methods=['GET'])
 def get_matches(public_id):
     try:
-        return SwipeService.matches(public_id)
+        return dumps(SwipeService.matches(public_id))
     except:
         return internal_server_error()
 
@@ -264,7 +264,7 @@ def get_matches(public_id):
 def save_swipes():
     try:
         _json = request.get_json()
-        return SwipeService.swipe(input_swipe_data=_json)
+        return dumps(SwipeService.swipe(input_swipe_data=_json))
     except:
         return internal_server_error()
 

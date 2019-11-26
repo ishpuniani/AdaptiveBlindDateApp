@@ -16,4 +16,4 @@ class MatchedUsersRepository:
         return dumps(self.__db.matched_users.find({}))
 
     def get_matches(self, userId):
-        return dumps(self.__db.matched_users.find({'$or': [{'user1': userId}, {'user2': userId}]}))
+        return list(self.__db.matched_users.find({'$or': [{'user1': userId}, {'user2': userId}]}))
