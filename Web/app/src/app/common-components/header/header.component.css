@@ -37,6 +37,7 @@
 
 .menu .menu-icon .dropdown-menu{
     display: block;
+    line-height: 2em;
 }
 
 .menu .menu-icon .dropdown-menu .menu-item {

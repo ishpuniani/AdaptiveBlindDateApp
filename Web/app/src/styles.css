@@ -45,9 +45,10 @@ input, select {
     font-weight: inherit;
     border: none;
     border-radius: 0.4rem;
-    height: 2em;
+    height: 3em;
     background-color: #fff;
     box-shadow: 0px 4px 10px 0px #ccc;
+    margin-bottom: 1em;
   }
   
 input::placeholder {
@@ -61,7 +62,7 @@ input:focus, select:focus {
 
 button{
     display:inline-block;
-    padding:0.35em 1.2em;
+    padding: 1em;
     border:0.1em solid #FFFFFF;
     margin:1em 0.3em 0.3em 0;
     border-radius:0.12em;

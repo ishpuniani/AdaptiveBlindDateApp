@@ -14,5 +14,12 @@
 
 .sub-heading{
     font-weight: normal;
-    color: rgb(27, 26, 26);
+    color: rgb(109, 99, 99);
+}
+
+.margin-btm{
+    margin-bottom: 1em;
+}
+.txt-centr{
+    text-align: right;
 }

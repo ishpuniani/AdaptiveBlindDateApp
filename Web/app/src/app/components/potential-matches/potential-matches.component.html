@@ -1,4 +1,25 @@
 <div class="potential-match-container">
-    <div class="container-heading">Potential Match</div>
-    <app-compatibility-chart></app-compatibility-chart>
+    <div *ngIf="!showMessage">
+        <div class="container-heading">Potential Match</div>
+        <app-compatibility-chart [chartData]="chartData"></app-compatibility-chart>
+        <div class="like-unlike-container">
+            <div class="like"><img class="link" (click)="likeDislike(1)" src="../../../assets/images/like.png"/></div>
+            <div class="unlike"><img class="link" (click)="likeDislike(-1)" src="../../../assets/images/unlike.png"/></div>
+        </div>
+        <div class="info-block">
+            <div class="right-align" (click)="toggleShowMoreInfo()">
+                <img class="tooltip" src="../../../assets/images/tooltip.png" />
+            </div>
+            <div class="info" *ngIf="showMoreInfo">
+                <div><b>Extraversion :</b> Outgoing OR Reserved?</div>
+                <div><b>Openness :</b> Creative OR Conventional?</div>
+                <div><b>Agreeableness :</b> Empathetic OR Suspicious?</div>
+                <div><b>Conscientousness :</b> Disciplined and Trustworthy OR Irresponsible?</div>
+                <div><b>Neuroticism :</b> Moody OR Calm?</div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showMessage">
+        <div class="message">No more potential matches available.</div>
+    </div>
 </div>

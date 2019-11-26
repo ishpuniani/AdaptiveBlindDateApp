@@ -32,10 +32,10 @@ export class LoginScreenComponent implements OnInit {
       'password' : this.user.password
     }
     this.userService.authenticateUser(userdata).subscribe((reponse)=>{
-      this.token = reponse['token'];
-      console.log(this.token);
+      this.token = reponse['public_id'];
+      localStorage.setItem('token', reponse['public_id']);
+      this.router.navigateByUrl('home');
      }); 
-    this.router.navigateByUrl('home');
   }
   
   showSignUpContent(value){
@@ -60,8 +60,8 @@ export class LoginScreenComponent implements OnInit {
         'mobile' : this.user.mobile
       }
       this.userService.signupUser(userdata).subscribe((reponse)=>{
-        this.token = reponse['token'];
-        console.log(this.token);
+        this.token = reponse['public_id'];
+        localStorage.setItem('token', reponse['public_id']);
        }); 
        this.showSignUpContent(false);
     }else{

@@ -1,3 +1,59 @@
 .chart-container{
     margin-top: 1em;
 }
+
+.like-unlike-container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 14vh;
+}
+@media only screen and (min-width: 600px) {
+    .like-unlike-container{
+        margin-top: 5vh;
+    }
+}
+
+img{
+    width: 5em;
+    opacity: 0.6;
+}
+
+.message{
+    color: #c52323;
+    margin: auto;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 4em;
+}
+
+.info-block{
+    color: rgb(68, 65, 65);
+    font-size: 0.8em;
+    position: relative;
+    top: 13em;
+}
+
+.right-align{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.info{
+    padding: 1em;
+    position: absolute;
+    right: 0em;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    box-shadow: 10px 10px 10px #ccc;
+    bottom: 1em;
+    z-index: 99;
+    background: #fff;
+}
+
+.tooltip{
+    width: 2em;
+    border: 5px solid #ce2a2a;
+    border-radius: 0.5em;
+    padding: .2em;
+    cursor: pointer;
+}

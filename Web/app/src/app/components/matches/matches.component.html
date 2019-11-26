@@ -1,13 +1,17 @@
 <div>
     <div class="container-heading">Matches till date:</div>
-    <div class="match-details">
+    <div class="match-details" *ngFor="let item of matchData">
         <div>
             <div class="sub-heading">Name</div>
-            <div>Chin Chu</div>
+            <div class="margin-btm">{{item?.match_name}}</div>
+            <div class="sub-heading">Contact Number</div>
+            <div>{{item?.match_ph}}</div>
         </div>
-        <div>
+        <div class="txt-centr">
             <div class="sub-heading">Suggested Activity</div>
-            <div>Hiking</div>    
+            <div class="margin-btm">{{item?.activity_cat}}({{item?.activity_name}})</div>    
+            <div class="sub-heading">Activity Address</div>
+            <div>{{item?.activity_add}}</div>
         </div>
     </div>
 </div>

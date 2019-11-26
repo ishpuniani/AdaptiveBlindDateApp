@@ -5,6 +5,8 @@
 
 .question-text{
     color: #ff0039;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .question-container .image-container{
