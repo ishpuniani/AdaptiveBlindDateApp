@@ -125,7 +125,7 @@ def login():
 @app.route('/users')
 # @token_required
 # def users(current_user):
-def users(current_user):
+def users():
     db_users = user_service.get_all_users()
     db_users = dumps(db_users)
     return jsonify({'users': db_users})

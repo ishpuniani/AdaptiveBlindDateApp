@@ -96,7 +96,7 @@ def find_match_score(self_score, ideal_score_a_b, ideal_score_b_a):
     return match_score
 
 
-def user_match_score(match_score=None, userid='234', n=4):
+def user_match_score(match_score=None, userid='234', n=5):
     """ Finds 'n' best matched users for a user id according to the match score
 
     :param match_score: dictionary containing all the match scores for all users
