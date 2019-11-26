@@ -19,6 +19,7 @@ user_ideal_scores
 import services.utilities as ut
 from repository.user_model_repository import UserModelRepository
 from repository.user_repository import UserRepository
+import os
 import json
 
 
@@ -59,7 +60,20 @@ class RecommenderService:
         user_model1 = {**user_model, **user_model_name}
         temp_list = []
         ## getting user models for match ids
+        user_swipes_path = 'user_swipes.json'
+        SITE_ROOT = os.path.abspath(os.curdir)
+        json_url = os.path.join(SITE_ROOT, '..', "resources", user_swipes_path)
+        user_swipes = json.load(open(json_url))
+        keys = user_swipes.keys()
+
+        for k, v in user_swipes.items():
+            if k == public_id:
+                for user_id in v:
+                    if user_id in final_match_user_list():
+                        final_match_user_list.remove(id)
+
         for match_id in final_match_user_list:
+            #print(val)
             match_model = self.__user_model_repository.get_user_model(public_id=match_id)
             match_modelname = self.__user_repository.get_user(public_id=match_id)
             match_model1 = {**match_model, **match_modelname}

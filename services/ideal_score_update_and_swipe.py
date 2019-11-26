@@ -52,14 +52,16 @@ def swipe(input_swipe_data):
 
     user1 = input_swipe_data["userid"]
     user2 = input_swipe_data["userid2"]
+    swipe = input_swipe_data['swipe']
 
     if user1 not in user_swipes:
         user_swipes[user1] = []
 
-    # update user_swipes
-    user_swipes[user1].append(user2)
-    # remove duplicates
-    user_swipes[user1] = list(set(user_swipes[user1]))
+    if swipe == 1:
+        # update user_swipes
+        user_swipes[user1].append(user2)
+        # remove duplicates
+        user_swipes[user1] = list(set(user_swipes[user1]))
 
     # write to user_swipes
     with open(json_url, 'w') as outfile:
