@@ -227,7 +227,7 @@ def get_questions():
 @app.route('/recommend/<public_id>', methods=['GET'])
 def get_recommendations(public_id):
     try:
-        return recommender_service.get_recommendations(public_id=public_id)
+        return dumps(recommender_service.get_recommendations(public_id=public_id))
     except:
         return internal_server_error()
 

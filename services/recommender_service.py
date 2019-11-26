@@ -29,13 +29,14 @@ class RecommenderService:
 
     def get_recommendations(self, public_id):
         user_model_db = self.__user_model_repository.get_all_user_models()
-        data_df = ut.json_to_df(user_model_db, columns=['public_id','conscientiousness', 'neuroticism', 'agreeableness', 'openness',
-                                                        'extraversion'])
+        data_df = ut.json_to_df(user_model_db,
+                                columns=['public_id', 'conscientiousness', 'neuroticism', 'agreeableness', 'openness',
+                                         'extraversion'])
         user_ideal_model_db = self.__user_model_repository.get_all_ideal_models()
 
         ideal_df = ut.json_to_df(user_ideal_model_db)
         ideal_df = ideal_df.drop('swipes', axis=1)
-        ideal_df = ideal_df.drop('_id',axis=1)
+        ideal_df = ideal_df.drop('_id', axis=1)
         print("ideal df")
 
         self_score = ut.calculate_similarity(data_df, data_df)
@@ -47,6 +48,17 @@ class RecommenderService:
 
         # find n matches for userid with lowest match score
         # userid and number of matches needed, to be fetched from UI
-        matches =  ut.user_match_score(match_score,userid=public_id)
-        final_match_user_list = str(matches[public_id].keys())
-        return final_match_user_list
+        matches = ut.user_match_score(match_score, userid=public_id)
+        final_match_user_list = (matches[public_id].keys())
+        ## getting user models for public id
+        public_dict = {}
+        user_model = self.__user_model_repository.get_user_model(public_id=public_id)
+        temp_list = []
+        ## getting user models for match ids
+        for match_id in final_match_user_list:
+            match_model = self.__user_model_repository.get_user_model(public_id=match_id)
+            temp_list.append(match_model)
+        value = {'user_model': user_model,
+                 'matches': temp_list}
+        #public_dict = json.loads(json.dumps(public_dict))
+        return value
