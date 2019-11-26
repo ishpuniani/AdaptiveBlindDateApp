@@ -3,6 +3,7 @@ import os
 import pandas as pd
 from repository.user_model_repository import UserModelRepository
 from bson.json_util import dumps
+import numpy as np
 import services.utilities as ut
 
 
@@ -59,16 +60,16 @@ class QuestionnaireService:
         user_model_to_update = {
             "_id": user_model['_id'],
             "public_id": user_df_updated.public_id[0],
-            "n_con": user_df_updated.n_con[0],
-            "conscientiousness": user_df_updated.conscientiousness[0],
-            "n_neu": user_df_updated.n_neu[0],
-            "neuroticism": user_df_updated.neuroticism[0],
-            "n_agr": user_df_updated.n_agr[0],
-            "agreeableness": user_df_updated.agreeableness[0],
-            "n_ope": user_df_updated.n_ope[0],
-            "openness": user_df_updated.openness[0],
-            "n_ext": user_df_updated.n_ext[0],
-            "extraversion": user_df_updated.extraversion[0]
+            "n_con": np.float(user_df_updated.n_con[0]),
+            "conscientiousness": np.float(user_df_updated.conscientiousness[0]),
+            "n_neu": np.float(user_df_updated.n_neu[0]),
+            "neuroticism": np.float(user_df_updated.neuroticism[0]),
+            "n_agr": np.float(user_df_updated.n_agr[0]),
+            "agreeableness": np.float(user_df_updated.agreeableness[0]),
+            "n_ope": np.float(user_df_updated.n_ope[0]),
+            "openness": np.float(user_df_updated.openness[0]),
+            "n_ext": np.float(user_df_updated.n_ext[0]),
+            "extraversion": np.float(user_df_updated.extraversion[0])
         }
 
         return self.__user_model_repository.save_user_model(user_model_to_update)
