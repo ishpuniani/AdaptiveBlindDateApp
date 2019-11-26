@@ -15,6 +15,7 @@ from services.recommender_service import RecommenderService
 from services.user_service import UserService
 from services.user_model_service import UserModelService
 from services.questionaire_service import QuestionnaireService
+import services.ideal_score_update_and_swipe as SwipeService
 
 # -----------------------------------------------------------------------------------------------------------------
 #                                     App Initialization
@@ -244,6 +245,26 @@ def save_answer():
 def get_recommendations(public_id):
     try:
         return dumps(recommender_service.get_recommendations(public_id=public_id))
+    except:
+        return internal_server_error()
+
+
+# -----------------------------------------------------------------------------------------------------------------
+#                                     Swipes and Match
+# -----------------------------------------------------------------------------------------------------------------
+@app.route('/matches/<public_id>', methods=['GET'])
+def get_matches(public_id):
+    try:
+        return SwipeService.matches(public_id)
+    except:
+        return internal_server_error()
+
+
+@app.route('/swipe', methods=['POST'])
+def save_swipes():
+    try:
+        _json = request.get_json()
+        return SwipeService.swipe(input_swipe_data=_json)
     except:
         return internal_server_error()
 

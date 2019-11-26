@@ -3,8 +3,14 @@ import requests
 import pandas as pd
 import argparse
 import numpy as np
+import random
 from pymongo import MongoClient
 from services.utilities import *
+from repository.activity_repository import ActivityRepository
+from repository.user_model_repository import UserModelRepository
+
+__activity_repository = ActivityRepository()
+__user_model_repository = UserModelRepository()
 
 try:
     # For Python 3.0 and later
@@ -129,19 +135,22 @@ def match_activities(user_1_id, user_2_id):
     :param user_2:
     :return: matched activity
     """
-    user_1_arr = get_user_char_array(user_1_id)
-    user_2_arr = get_user_char_array(user_2_id)
-    min_score = 10000000.0
+    # user_1_arr = get_user_char_array(user_1_id)
+    # user_2_arr = get_user_char_array(user_2_id)
+    # min_score = 10000000.0
     min_activity_id = ''
-    for am in db.ActivityModels.find():
-        am_arr = json_to_df(am, char_columns)
-        score = compute_activity_match_score(user_1_arr, user_2_arr, am)
-        if score < min_score:
-            min_score = score
-            min_activity_id = am['activity_id']
-
-    matched_activity = db.Activities.find_one({'Id':min_activity_id})
-    return {'score':min_score, 'activity':matched_activity}
+    # for am in db.ActivityModels.find():
+    #     am_arr = json_to_df(am, char_columns)
+    #     score = compute_activity_match_score(user_1_arr, user_2_arr, am)
+    #     if score < min_score:
+    #         min_score = score
+    #         min_activity_id = am['activity_id']
+    #
+    # matched_activity = db.Activities.find_one({'Id':min_activity_id})
+    # matched_activity = __activity_repository.get_activity(random.randrange(1,25))
+    matched_activity_id = random.randrange(1,25)
+    # return {'score':0.0, 'activity_id':matched_activity_id}
+    return matched_activity_id
 
 
 def compute_activity_match_score(user_1, user_2, activity):
