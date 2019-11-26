@@ -43,6 +43,7 @@
 }
 .login-container .signup-link .signup-text{
     padding: 0 2px;
+    cursor: pointer;
 }
 @media only screen and (min-width: 600px) {
     .login-container .app-name img{
