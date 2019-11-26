@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from collections import OrderedDict
 from itertools import islice
+from bson.json_util import dumps
 
 def euclidean_distance(arr1, arr2):
     """
@@ -17,7 +18,7 @@ def euclidean_distance(arr1, arr2):
     return d
 
 #@staticmethod
-def json_to_df(json, columns=None):
+def json_to_df(json1, columns=None):
     """
     Helper function for converting json to Dataframe
     :param json: Json to be converted to Dataframe
@@ -25,15 +26,18 @@ def json_to_df(json, columns=None):
     :return: Corresponding Dataframe for given json
     """
 
-    try:
-        df = pd.DataFrame(list(json.items())).T
+    json1 = dumps(json1)
+    json1 = json.loads(json1)
+    df = pd.DataFrame(json1)
+        #df1 = df.T.copy()
+    print("here")
         # df.rename(columns={"index":"id"},inplace=True)
         # df = pd.DataFrame(json).T.reset_index()
-        if columns is not None:
-            df = df.loc[:, df.columns.str.contains('|'.join(columns))]
-        return df
-    except:
-        pass
+    if columns is not None:
+        print("in if")
+        df = df.loc[:, df.columns.str.contains('|'.join(columns))]
+    return df
+
 
 
 def calculate_similarity(data_df, ideal_df):
@@ -49,17 +53,17 @@ def calculate_similarity(data_df, ideal_df):
     score_dict = {}
     l1 = len(data_df)
     for i in range(l1):
-        arr1 = ideal_df.iloc[i, :].values
-        user_id_1 = ideal_df.index[i]
+        arr1 = ideal_df.iloc[i, 1:].values
+        user_id_1 = ideal_df['public_id'][i]
         score_other_list = []
         score_dict[user_id_1] = {}
         # print(score_dict)
         for j in range(l1):
-            user_id_2 = data_df.index[j]
+            user_id_2 = data_df['public_id'][j]
             # print(user_id_1,user_id_2)
             if (i == j):
                 continue
-            arr2 = data_df.iloc[j, :].values
+            arr2 = data_df.iloc[j, 1:].values
             # score_other_list.append(euclidean_distance(arr1, arr2))
             score_dict[user_id_1][user_id_2] = euclidean_distance(arr1, arr2)
             # print(score_dict)

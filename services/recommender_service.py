@@ -29,12 +29,14 @@ class RecommenderService:
 
     def get_recommendations(self, public_id):
         user_model_db = self.__user_model_repository.get_user_model(public_id=public_id)
-        data_df = ut.json_to_df(user_model_db, columns=['conscientiousness', 'neuroticism', 'agreeableness', 'openness',
+        data_df = ut.json_to_df(user_model_db, columns=['public_id','conscientiousness', 'neuroticism', 'agreeableness', 'openness',
                                                         'extraversion'])
         user_ideal_model_db = self.__user_model_repository.get_user_ideal_model(public_id=public_id)
 
         ideal_df = ut.json_to_df(user_ideal_model_db)
         ideal_df = ideal_df.drop('swipes', axis=1)
+        ideal_df = ideal_df.drop('_id',axis=1)
+        print("ideal df")
 
         self_score = ut.calculate_similarity(data_df, data_df)
         ideal_score_a_b = ut.calculate_similarity(data_df, ideal_df)
