@@ -30,11 +30,9 @@ def json_to_df(json1, columns=None):
     json1 = json.loads(json1)
     df = pd.DataFrame(json1)
         #df1 = df.T.copy()
-    print("here")
         # df.rename(columns={"index":"id"},inplace=True)
         # df = pd.DataFrame(json).T.reset_index()
     if columns is not None:
-        print("in if")
         df = df.loc[:, df.columns.str.contains('|'.join(columns))]
     return df
 
