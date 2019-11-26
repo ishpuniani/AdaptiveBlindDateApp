@@ -21,12 +21,12 @@ class UserModelRepository:
 
     def save_user_model(self, user_model):
         user_model_db = self.get_user_model(public_id=user_model['public_id'])
-        
-        if user_model_db is None:
+
+        if not user_model_db:
             self.__db.user_model.insert(user_model)
         else:
-            self.__db.user_model.update_one({'public_id': user_model['public_id']},
-                                            {'$set': user_model})
+            self.__db.user_model.replace_one({'public_id': user_model['public_id']},
+                                             user_model)
 
         return user_model
 
@@ -40,7 +40,7 @@ class UserModelRepository:
             self.__db.user_ideal_model.insert(user_ideal_model)
         else:
             self.__db.user_ideal_model.update_one({'public_id': user_ideal_model['public_id']},
-                                            {'$set': user_ideal_model})
+                                                  {'$set': user_ideal_model})
 
         return user_ideal_model
 
