@@ -97,7 +97,7 @@ def add_user():
 
         user_model_service.save_user_ideal_model(public_id=_public_id)
 
-        return user_to_save
+        return _public_id
     else:
         return not_found()
 

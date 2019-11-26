@@ -60,8 +60,9 @@ export class LoginScreenComponent implements OnInit {
         'mobile' : this.user.mobile
       }
       this.userService.signupUser(userdata).subscribe((reponse)=>{
-        this.token = reponse['public_id'];
-        localStorage.setItem('token', reponse['public_id']);
+        // console.log(reponse);
+        localStorage.setItem('token', reponse.toString());
+        this.router.navigateByUrl('home/question');
        }); 
        this.showSignUpContent(false);
     }else{
