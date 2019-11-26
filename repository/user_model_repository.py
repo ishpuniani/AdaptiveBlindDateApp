@@ -25,8 +25,8 @@ class UserModelRepository:
         if not user_model_db:
             self.__db.user_model.insert(user_model)
         else:
-            self.__db.user_model.replace_one({'public_id': user_model['public_id']},
-                                             user_model)
+            self.__db.user_model.update_one({'public_id': user_model['public_id']},
+                                                {'$set': user_model})
 
         return user_model
 
