@@ -40,7 +40,6 @@ class RecommenderService:
         ideal_df = ut.json_to_df(user_ideal_model_db)
         ideal_df = ideal_df.drop('swipes', axis=1)
         ideal_df = ideal_df.drop('_id', axis=1)
-        print("ideal df")
 
         self_score = ut.calculate_similarity(data_df, data_df)
         ideal_score_a_b = ut.calculate_similarity(data_df, ideal_df)

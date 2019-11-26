@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-potential-matches',
@@ -15,10 +16,15 @@ export class PotentialMatchesComponent implements OnInit {
   showMessage = false;
   showMoreInfo = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.fetchRecommendations();
+    console.log('------', localStorage.getItem('token'));
+    if(localStorage.getItem('token') && localStorage.getItem('token') != null){
+      this.fetchRecommendations();
+    }else{
+      this.router.navigateByUrl('/login');
+    }
   }
 
   fetchRecommendations(){

@@ -25,16 +25,16 @@ export class CompatibilityChartComponent implements OnInit {
       var data = {
         labels: ['Agreeableness', 'Conscientiousness', 'Extraversion', 'Neuroticism', 'Openness'],
         datasets: [{
-          backgroundColor: "rgba(236, 172, 172, 0.5)",
-          borderColor: "rgba(236, 172, 172, 0.5)",
-          pointBackgroundColor: "rgba(236, 172, 172, 0.5)",
+          backgroundColor: "rgba(230, 15, 15, 0.3)",
+          borderColor: "rgba(230, 15, 15, 0.3)",
+          pointBackgroundColor: "rgba(230, 15, 15, 0.3)",
           label: this.chartData.user.name,
           data: this.chartData.user.data
         },
         {
-          backgroundColor: "rgba(228, 149, 203, 0.5)",
-          borderColor: "rgba(228, 149, 203, 0.5)",
-          pointBackgroundColor: "rgba(228, 149, 203, 0.5)",
+          backgroundColor: "rgba(0, 123, 255, 0.3)",
+          borderColor: "rgba(0, 123, 255, 0.3)",
+          pointBackgroundColor: "rgba(0, 123, 255, 0.3)",
           label: this.chartData.match.name,
           data: this.chartData.match.data
         }]
