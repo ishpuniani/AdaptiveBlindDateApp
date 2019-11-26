@@ -18,14 +18,17 @@ user_ideal_scores
 """
 import services.utilities as ut
 from repository.user_model_repository import UserModelRepository
+from repository.user_repository import UserRepository
 import json
 
 
 class RecommenderService:
     __user_model_repository = None
+    __user_respository = None
 
     def __init__(self):
         self.__user_model_repository = UserModelRepository()
+        self.__user_repository = UserRepository()
 
     def get_recommendations(self, public_id):
         user_model_db = self.__user_model_repository.get_all_user_models()
@@ -53,12 +56,16 @@ class RecommenderService:
         ## getting user models for public id
         public_dict = {}
         user_model = self.__user_model_repository.get_user_model(public_id=public_id)
+        user_model_name = self.__user_repository.get_user(public_id=public_id,email=None)
+        user_model1 = {**user_model, **user_model_name}
         temp_list = []
         ## getting user models for match ids
         for match_id in final_match_user_list:
             match_model = self.__user_model_repository.get_user_model(public_id=match_id)
-            temp_list.append(match_model)
-        value = {'user_model': user_model,
+            match_modelname = self.__user_repository.get_user(public_id=match_id)
+            match_model1 = {**match_model, **match_modelname}
+            temp_list.append(match_model1)
+        value = {'user_model': user_model1,
                  'matches': temp_list}
         #public_dict = json.loads(json.dumps(public_dict))
         return value
